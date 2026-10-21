@@ -52,6 +52,7 @@ class Sort
         {
             Console.Write(leftint + " "); //prints integers in array 
         }
+        Console.WriteLine(); //used for formatting
         Console.ReadLine(); //this is required to print the sorted array on the line below
         MergeSort(ints); //calls mergesort with array
 
@@ -61,7 +62,9 @@ class Sort
         {
             Console.Write(leftint + " "); //output integer
         }
+        Console.WriteLine(); //used to format
         Console.ReadLine(); //this is required to allow me as the programmer to see it (due to Macbook issues)
+        Console.WriteLine($"The largest number in the array is: { ints.Last()}"); //outputs the last and also biggest value in the array finding the largest number
     }
 }
 // Main is located at the end of the program so it can run back to the other functions and knows they are there
