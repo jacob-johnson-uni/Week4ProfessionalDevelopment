@@ -1,0 +1,78 @@
+Week 4 - Professional Development Workshop
+
+I (Identify the problem)
+D (Describe the outcome)
+E (Explore approaches)
+A (Anticipate or act)
+L (Look back)
+
+Step 1 - Apply the first 3 steps of the IDEAL framework to approach this problem.
+I (Identify the problem) - To locate, identify and output the largest number in an array of numbers.
+D (Describe the outcome) - The number list is shortened step by step using a sort until the number is found.
+E (Explore approaches) - I could use Merge Sort, Insertion Sort, Bubble Sort to find the number by ordering them in a list.
+
+Step 2 - Program a solution to this problem
+
+class Sort
+{ 
+    private static void Merge(int[] arr, int[] left, int[] right)
+    {
+        int leftint = 0, j = 0, k = 0; 
+        while (leftint < left.Length && j < right.Length) 
+        {
+            if (left[leftint] <= right[j]) 
+                arr[k++] = left[leftint++]; 
+            else
+                arr[k++] = right[j++]; 
+        }
+
+        while (leftint < left.Length) 
+            arr[k++] = left[leftint++]; 
+
+        while (j < right.Length) 
+            arr[k++] = right[j++]; 
+    }
+
+    public static void MergeSort(int[] arr) 
+    {
+        if (arr.Length <= 1) 
+            return;
+
+        int mid = arr.Length / 2;  
+
+        int[] left = new int[mid]; 
+        int[] right = new int[arr.Length - mid];
+
+        for (int leftint = 0; leftint < mid; leftint++) 
+            left[leftint] = arr[leftint]; 
+
+        for (int leftint = mid; leftint < arr.Length; leftint++) 
+            right[leftint - mid] = arr[leftint]; 
+
+        MergeSort(left); 
+        MergeSort(right); 
+
+        Merge(arr, left, right); 
+    }
+
+    public static void Main()
+    {
+        int[] ints = { 1218, 9957, 1949, 5683, 2665, 5382, 1322, 9458, 4061, 8400, 6955, 1419, 8585, 211, 5299, 5600, 1414, 285, 9515, 5989, 3387, 7613, 3489, 8499, 9981, 1448, 8976, 2363, 564, 9481, 784, 800, 1018, 6613, 8448, 7591, 9561, 983, 1605, 8979, 4068, 4978, 4050, 3479, 5356, 8644, 3235, 438, 8417, 432, 4478, 1619, 2075, 66, 1912, 6749, 127, 9492, 5964, 9854, 646, 3730, 2335, 2105, 6566, 3898, 7832, 8238, 5361, 4237, 7791, 1261, 7227, 8850, 9801, 9511, 9109, 5453, 8071, 65, 4590, 8377, 6805, 1060, 5293, 8673, 4219, 440, 6102, 9931, 2185, 2745, 6261, 9513, 2981, 491, 5477, 1426, 7276, 664, 5996, 6232, 5380, 4085, 1685, 9611, 6102, 431, 505, 8748, 5631, 2704, 8309, 702, 3741, 4178, 6896, 326, 932, 3854, 4567, 870, 3721, 1460, 2563, 8607, 5230, 2947, 5171, 6248, 1383, 3637, 1952, 1513, 2170, 2852, 3450, 3282, 3607, 8896 }; 
+
+        Console.WriteLine("Original array:"); 
+        foreach (int leftint in ints) 
+        {
+            Console.Write(leftint + " "); 
+        }
+        Console.ReadLine(); 
+        MergeSort(ints); 
+
+        Console.WriteLine("Sorted array:"); 
+
+        foreach (int leftint in ints) 
+        {
+            Console.Write(leftint + " "); 
+        }
+        Console.ReadLine(); 
+    }
+}
